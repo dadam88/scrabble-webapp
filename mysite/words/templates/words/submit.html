@@ -1,0 +1,15 @@
+{% if word %}
+<h1>you created the new word {{word}} </h1>
+<br>
+<ul><a href="{% url 'words:index' %}">Enter More!</a>  </ul>
+{{ unscrab }}
+
+{% for combo in unscrab %}
+<li>{{ combo }}</li>
+{% endfor %}
+
+
+
+{% else %}
+    <p>No words are available.</p>
+{% endif %}

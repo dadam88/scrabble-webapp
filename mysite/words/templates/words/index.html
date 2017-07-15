@@ -1,0 +1,40 @@
+<!-- {% if list_of_entered_words %}
+    <ul>
+    {% for word in list_of_entered_words %}
+        <li><a href="/words/{{ word }}/">{{ word }}</a></li>
+        <li><a href="{% url 'words:details' word %}">{{ word }}</a></li>
+    {% endfor %}
+    </ul> -->
+<!-- <form action="/words">
+  Enter word:<br>
+  <input type="text" name="firstname" value="Mickey"><br>
+  <input type="submit" value="Submit">
+</form> -->
+
+<form action="{% url 'words:submit' %}"  method="post">
+
+{% csrf_token %}
+  Enter letters:<br>
+  <input type="text" name="entered_word" value="default" autofocus><br>
+  <input type="submit" value="Cheat">
+</form>
+
+<!-- {% else %}
+    <p>No words are available.</p>
+{% endif %} -->
+
+{% if word %}
+  <h1>you created the new word {{word}} </h1>
+  <br>
+  <ul><a href="{% url 'words:index' %}">Enter More!</a>  </ul>
+{{ unscrab }}
+
+{% for combo in unscrab %}
+  <li>{{ combo }}</li>
+{% endfor %}
+
+
+
+{% else %}
+    <p>No words are available.</p>
+{% endif %}
